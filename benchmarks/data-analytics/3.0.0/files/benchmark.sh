@@ -3,6 +3,7 @@
 RED='\033[0;31m'
 RESET='\033[0m'
 
+${HADOOP_PREFIX}/bin/hdfs dfs -setrep -R -w 1
 ${HADOOP_PREFIX}/bin/hdfs dfs -test -e /user/root/wiki
 if [ $? -ne 0 ]; then
   ${HADOOP_PREFIX}/bin/hdfs dfs -mkdir -p /user/root
