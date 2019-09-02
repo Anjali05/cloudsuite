@@ -1,4 +1,5 @@
-FROM cloudsuite/hadoop
+FROM shally05/my-hadoop
+
 
 ENV MAHOUT_VERSION 0.12.2
 ENV MAHOUT_HOME /opt/mahout-${MAHOUT_VERSION}
@@ -9,6 +10,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Mahout
+RUN apt-get update && apt-get install vim -y && apt-get install strace -y 
 RUN set -x \
     && MIRROR=$(curl -s http://www.apache.org/dyn/closer.lua?as_json=1 | grep preferred | awk '{print $2}' | sed -e 's/"//g') \
     && URL=${MIRROR}mahout/${MAHOUT_VERSION}/apache-mahout-distribution-${MAHOUT_VERSION}.tar.gz \

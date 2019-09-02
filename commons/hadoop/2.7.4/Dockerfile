@@ -1,13 +1,13 @@
 FROM cloudsuite/java
 
 # Install dependencies
-RUN apt-get update -y && apt-get install -y --no-install-recommends \
+RUN apt-get update -y && apt-get install vim -y && apt-get install -y --no-install-recommends \
       curl \
       rsync \
       ssh \
     && rm -rf /var/lib/apt/lists/*
 
-ENV HADOOP_VERSION 2.7.4
+ENV HADOOP_VERSION 2.7.7
 ENV HADOOP_PREFIX /opt/hadoop-${HADOOP_VERSION}
 ENV HADOOP_CONF_DIR ${HADOOP_PREFIX}/etc/hadoop
 
